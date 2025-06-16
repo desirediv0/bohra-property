@@ -1,14 +1,10 @@
-
-
-
-
 const { createServer } = require('http');
 const next = require('next');
 const dotenv = require('dotenv');
 
 dotenv.config();
 
-const port = process.env.PORT || 7003;
+const port = process.env.PORT || 7005;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
