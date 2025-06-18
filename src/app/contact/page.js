@@ -1,40 +1,77 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import Testimonials from '@/components/Testimonials'
-import FAQ from '@/components/FAQ'
-import CTA from '@/components/CTA'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  })
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-  }
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message:
+            "Thank you! Your message has been sent successfully. We will get back to you soon.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "Failed to send message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   return (
     <main className="min-h-screen">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
@@ -47,7 +84,7 @@ export default function Contact() {
           />
           <div className="absolute inset-0 bg-primary/60" />
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,17 +110,27 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-serif text-accent mb-6">Get in Touch</h2>
+              <h2 className="text-3xl font-serif text-accent mb-6">
+                Get in Touch
+              </h2>
               <p className="text-accent-light mb-8">
-                Have questions about our properties? We are here to help. Fill out the form and we will get back to you as soon as possible.
+                Have questions about our properties? We are here to help. Fill
+                out the form and we will get back to you as soon as possible.
               </p>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-serif text-accent mb-2">Address</h3>
-                  <p className="text-accent-light">SCO 63, 1st Floor, OLD Judicial Complex, Civil Line, Sector-15, Part-1, Gurugram</p>
+                  <h3 className="text-xl font-serif text-accent mb-2">
+                    Address
+                  </h3>
+                  <p className="text-accent-light">
+                    SCO 63, 1st Floor, OLD Judicial Complex, Civil Line,
+                    Sector-15, Part-1, Gurugram
+                  </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-serif text-accent mb-2">Helpline Number</h3>
+                  <h3 className="text-xl font-serif text-accent mb-2">
+                    Helpline Number
+                  </h3>
                   <p className="text-accent-light">+91 9990859732</p>
                 </div>
                 <div>
@@ -93,11 +140,13 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-serif text-accent mb-2">Email</h3>
-                  <p className="text-accent-light">bohraproperty360@gmail.com</p>
+                  <p className="text-accent-light">
+                    bohraproperty360@gmail.com
+                  </p>
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -106,7 +155,9 @@ export default function Contact() {
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-accent mb-2">Name</label>
+                  <label htmlFor="name" className="block text-accent mb-2">
+                    Name
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -118,7 +169,9 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-accent mb-2">Email</label>
+                  <label htmlFor="email" className="block text-accent mb-2">
+                    Email
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -130,7 +183,9 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-accent mb-2">Phone</label>
+                  <label htmlFor="phone" className="block text-accent mb-2">
+                    Phone
+                  </label>
                   <input
                     type="tel"
                     id="phone"
@@ -142,7 +197,9 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-accent mb-2">Message</label>
+                  <label htmlFor="message" className="block text-accent mb-2">
+                    Message
+                  </label>
                   <textarea
                     id="message"
                     name="message"
@@ -153,11 +210,28 @@ export default function Contact() {
                     required
                   ></textarea>
                 </div>
+                {submitStatus && (
+                  <div
+                    className={`p-4 rounded-md mb-4 ${
+                      submitStatus.type === "success"
+                        ? "bg-green-100 text-green-700 border border-green-300"
+                        : "bg-red-100 text-red-700 border border-red-300"
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-secondary hover:bg-secondary-light text-primary px-6 py-3 rounded-md font-medium transition-colors"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 py-3 rounded-md font-medium transition-colors ${
+                    isSubmitting
+                      ? "bg-gray-400 cursor-not-allowed text-gray-600"
+                      : "bg-secondary hover:bg-secondary-light text-primary"
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </motion.div>
@@ -223,5 +297,5 @@ export default function Contact() {
       {/* <CTA /> */}
       <Footer />
     </main>
-  )
-} 
+  );
+}
