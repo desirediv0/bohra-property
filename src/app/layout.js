@@ -1,6 +1,7 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({
@@ -32,9 +33,9 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         <noscript>
-          <img
-            height="1"
-            width="1"
+          <Image
+            width={1}
+            height={1}
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1668144674115192&ev=PageView&noscript=1"
             alt=""
