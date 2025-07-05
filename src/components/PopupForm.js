@@ -50,11 +50,7 @@ export default function PopupForm() {
       if (response.ok) {
         setSubmitStatus("success");
         setFormData({ name: "", email: "", phone: "" });
-        // Close popup after 2 seconds
-        setTimeout(() => {
-          setIsOpen(false);
-          setSubmitStatus(null);
-        }, 2000);
+        // Don't auto-close the popup, let user close it manually
       } else {
         setSubmitStatus("error");
       }
@@ -74,7 +70,7 @@ export default function PopupForm() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -90,15 +86,15 @@ export default function PopupForm() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative bg-[#1B1B1B] rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
+            className="relative bg-[#1B1B1B] rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden flex flex-col"
           >
             {/* Close button */}
             <button
               onClick={closePopup}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-400 hover:text-gray-600 transition-colors z-10 p-1"
             >
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -113,29 +109,29 @@ export default function PopupForm() {
             </button>
 
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#1B1B1B] to-[#2A2A2A] text-white p-6 text-center">
+            <div className="bg-gradient-to-r from-[#1B1B1B] to-[#2A2A2A] text-white p-4 sm:p-6 text-center flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="logo"
-                width={100}
-                height={100}
-                className="mx-auto"
+                width={80}
+                height={80}
+                className="mx-auto sm:w-[100px] sm:h-[100px]"
               />
-              <h2 className="text-2xl font-bold mb-2">
+              <h2 className="text-xl sm:text-2xl font-bold mb-2">
                 Get Your Dream Property!
               </h2>
-              <p className="text-gray-300">
+              <p className="text-gray-300 text-sm sm:text-base">
                 Fill in your details and we'll get back to you within 24 hours
               </p>
             </div>
 
             {/* Form */}
-            <div className="p-6">
+            <div className="p-4 sm:p-6 flex-1 overflow-y-auto">
               {submitStatus === "success" ? (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="text-center py-6 sm:py-8">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg
-                      className="w-8 h-8 text-yellow-600"
+                      className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -148,15 +144,18 @@ export default function PopupForm() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-300 text-sm sm:text-base">
                     We'll contact you soon with the best property options.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-3 sm:space-y-4"
+                >
                   <div>
                     <label
                       htmlFor="name"
@@ -171,7 +170,7 @@ export default function PopupForm() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors bg-gray-800 text-white placeholder-gray-400"
+                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors bg-gray-800 text-white placeholder-gray-400 text-sm sm:text-base"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -190,7 +189,7 @@ export default function PopupForm() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors bg-gray-800 text-white placeholder-gray-400"
+                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors bg-gray-800 text-white placeholder-gray-400 text-sm sm:text-base"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -209,7 +208,7 @@ export default function PopupForm() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors bg-gray-800 text-white placeholder-gray-400"
+                      className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-colors bg-gray-800 text-white placeholder-gray-400 text-sm sm:text-base"
                       placeholder="Enter your phone number"
                     />
                   </div>
@@ -225,12 +224,12 @@ export default function PopupForm() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2.5 sm:py-3 px-4 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
                         <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                          className="animate-spin -ml-1 mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
