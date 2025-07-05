@@ -1,18 +1,14 @@
-'use client'
+"use client";
 
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import Testimonials from '@/components/Testimonials'
-import FAQ from '@/components/FAQ'
-import CTA from '@/components/CTA'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   return (
     <main className="min-h-screen">
-      <Navbar />
-      
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
@@ -25,7 +21,7 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-primary/60" />
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,8 +51,9 @@ export default function About() {
               Our Story
             </h2>
             <p className="text-accent-light max-w-3xl mx-auto">
-              Founded in 2010, BOHRA Property has grown to become one of the most trusted names in real estate. 
-              Our journey began with a simple mission: to help people find their perfect homes and make their 
+              Founded in 2010, BOHRA Property has grown to become one of the
+              most trusted names in real estate. Our journey began with a simple
+              mission: to help people find their perfect homes and make their
               real estate dreams come true.
             </p>
           </motion.div>
@@ -85,15 +82,17 @@ export default function About() {
             >
               <h3 className="text-2xl font-serif text-accent">Our Mission</h3>
               <p className="text-accent-light">
-                We strive to provide exceptional real estate services while maintaining the highest standards 
-                of professionalism and integrity. Our goal is to make the property buying and selling process 
-                as smooth and enjoyable as possible for our clients.
+                We strive to provide exceptional real estate services while
+                maintaining the highest standards of professionalism and
+                integrity. Our goal is to make the property buying and selling
+                process as smooth and enjoyable as possible for our clients.
               </p>
               <h3 className="text-2xl font-serif text-accent">Our Vision</h3>
               <p className="text-accent-light">
-                To be the leading real estate company known for our commitment to excellence, innovation, 
-                and customer satisfaction. We aim to transform the real estate experience through our 
-                dedication to quality and service.
+                To be the leading real estate company known for our commitment
+                to excellence, innovation, and customer satisfaction. We aim to
+                transform the real estate experience through our dedication to
+                quality and service.
               </p>
             </motion.div>
           </div>
@@ -114,27 +113,32 @@ export default function About() {
               Why Choose Us
             </h2>
             <p className="text-accent-light max-w-2xl mx-auto">
-              We stand out from the competition with our commitment to excellence and client satisfaction.
+              We stand out from the competition with our commitment to
+              excellence and client satisfaction.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: 'Expert Guidance',
-                description: 'Our team of experienced real estate professionals provides personalized guidance throughout your property journey.',
+                title: "Expert Guidance",
+                description:
+                  "Our team of experienced real estate professionals provides personalized guidance throughout your property journey.",
               },
               {
-                title: 'Premium Properties',
-                description: 'We curate only the finest properties that meet our high standards of quality and luxury.',
+                title: "Premium Properties",
+                description:
+                  "We curate only the finest properties that meet our high standards of quality and luxury.",
               },
               {
-                title: 'Client Satisfaction',
-                description: 'Your satisfaction is our priority. We work tirelessly to exceed your expectations.',
+                title: "Client Satisfaction",
+                description:
+                  "Your satisfaction is our priority. We work tirelessly to exceed your expectations.",
               },
               {
-                title: 'Market Expertise',
-                description: 'With years of experience, we have deep insights into the real estate market trends and opportunities.',
+                title: "Market Expertise",
+                description:
+                  "With years of experience, we have deep insights into the real estate market trends and opportunities.",
               },
             ].map((feature, index) => (
               <motion.div
@@ -145,7 +149,9 @@ export default function About() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-primary-light p-6 rounded-lg"
               >
-                <h3 className="text-xl font-serif text-accent mb-3">{feature.title}</h3>
+                <h3 className="text-xl font-serif text-accent mb-3">
+                  {feature.title}
+                </h3>
                 <p className="text-accent-light">{feature.description}</p>
               </motion.div>
             ))}
@@ -156,7 +162,6 @@ export default function About() {
       <Testimonials />
       <FAQ />
       <CTA />
-      <Footer />
     </main>
-  )
-} 
+  );
+}

@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -70,8 +66,6 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
@@ -295,7 +289,6 @@ export default function Contact() {
       {/* <Testimonials /> */}
       {/* <FAQ /> */}
       {/* <CTA /> */}
-      <Footer />
     </main>
   );
 }

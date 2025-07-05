@@ -1,22 +1,27 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const quickLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Properties', href: '/properties' },
-  { name: 'Contact', href: '/contact' },
-]
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Properties", href: "/properties" },
+  { name: "Contact", href: "/contact" },
+  { name: "Terms & Conditions", href: "/terms-and-conditions" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+];
 
 const socialLinks = [
-  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61577071472468' },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61577071472468",
+  },
   // { name: 'Twitter', href: '#' },
-  { name: 'Instagram', href: 'https://www.instagram.com/bohra_property/' },
+  { name: "Instagram", href: "https://www.instagram.com/bohra_property/" },
   // { name: 'LinkedIn', href: '#' },
-]
+];
 
 export default function Footer() {
   return (
@@ -26,10 +31,17 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="text-2xl font-serif text-secondary">
-              <Image src="/logo1.png" alt="Logo" width={70} height={70} className="mr-2" />
+              <Image
+                src="/logo1.png"
+                alt="Logo"
+                width={70}
+                height={70}
+                className="mr-2"
+              />
             </Link>
             <p className="text-accent-light">
-              Your trusted partner in luxury real estate. We bring you the finest properties in prime locations.
+              Your trusted partner in luxury real estate. We bring you the
+              finest properties in prime locations.
             </p>
           </div>
 
@@ -54,7 +66,10 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-serif text-accent mb-4">Contact Us</h4>
             <ul className="space-y-2 text-accent-light">
-              <li>SCO 63, 1st Floor, OLD Judicial Complex, Civil Line, Sector-15, Part-1, Gurugram</li>
+              <li>
+                SCO 63, 1st Floor, OLD Judicial Complex, Civil Line, Sector-15,
+                Part-1, Gurugram
+              </li>
               <li>Phone: +91 9999913030</li>
               <li>+91 9990859732</li>
               <li>Email: bohraproperty360@gmail.com</li>
@@ -83,9 +98,12 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-secondary/20 text-center text-accent-light">
-          <p>&copy; {new Date().getFullYear()} BOHRA Property Pvt. Ltd. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} BOHRA Property Pvt. Ltd. All
+            rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
-} 
+  );
+}

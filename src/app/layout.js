@@ -2,6 +2,9 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import PopupForm from "@/components/PopupForm";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({
@@ -45,7 +48,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${playfair.variable} font-sans bg-primary text-accent min-h-screen`}
       >
+        <Navbar />
         {children}
+        <Footer />
+        <PopupForm />
       </body>
     </html>
   );
