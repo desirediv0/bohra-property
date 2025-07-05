@@ -8,9 +8,10 @@ const PrivacyPolicy = () => {
 
       <p className="mb-6">
         This privacy notice for <strong>BOHRA Property Pvt. Ltd.</strong>{" "}
-        ("BOHRA Property", "we", "us", or "our") describes how and why we might
-        collect, store, use, and/or share ("process") your information when you
-        use our services ("Services"), such as when you:
+        (&ldquo;BOHRA Property&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or
+        &ldquo;our&rdquo;) describes how and why we might collect, store, use,
+        and/or share (&ldquo;process&rdquo;) your information when you use our
+        services (&ldquo;Services&rdquo;), such as when you:
       </p>
 
       <ul className="list-disc list-inside mb-6">
@@ -146,9 +147,9 @@ const PrivacyPolicy = () => {
 
       <h2 className="text-xl font-semibold mt-10 mb-4">California Residents</h2>
       <p className="mb-6">
-        California residents have special rights under the "Shine the Light"
-        law. Contact us to request information about data shared for direct
-        marketing.
+        California residents have special rights under the &ldquo;Shine the
+        Light&rdquo; law. Contact us to request information about data shared
+        for direct marketing.
       </p>
 
       <h2 className="text-xl font-semibold mt-10 mb-4">

@@ -121,7 +121,8 @@ export default function PopupForm() {
                 Get Your Dream Property!
               </h2>
               <p className="text-gray-300 text-sm sm:text-base">
-                Fill in your details and we'll get back to you within 24 hours
+                Fill in your details and we&apos;ll get back to you within 24
+                hours
               </p>
             </div>
 
@@ -148,7 +149,7 @@ export default function PopupForm() {
                     Thank You!
                   </h3>
                   <p className="text-gray-300 text-sm sm:text-base">
-                    We'll contact you soon with the best property options.
+                    We&apos;ll contact you soon with the best property options.
                   </p>
                 </div>
               ) : (
