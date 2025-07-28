@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PopupForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -256,10 +257,23 @@ export default function PopupForm() {
                     )}
                   </button>
 
-                  <p className="text-xs text-gray-400 text-center">
-                    By submitting this form, you agree to our terms and privacy
-                    policy.
-                  </p>
+                  <div className="text-xs text-gray-400 text-center">
+                    By submitting this form, you agree to our{" "}
+                    <Link
+                      href={"/terms-and-conditions"}
+                      onClick={closePopup}
+                      className="text-yellow-500"
+                    >
+                      terms
+                    </Link>{" "}
+                    and{" "}
+                    <Link href={"/privacy-policy"}
+                      onClick={closePopup}
+                      className="text-yellow-500">
+                      privacy policy
+                    </Link>
+                    .
+                  </div>
                 </form>
               )}
             </div>
