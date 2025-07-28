@@ -216,6 +216,11 @@ export default function Contact() {
                   </div>
                 )}
 
+                <div className="text-sm text-accent-light mb-4">
+                  I agree to get all updates via SMS. Whatsapp, RCS, Email & any
+                  other channel.
+                </div>
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
